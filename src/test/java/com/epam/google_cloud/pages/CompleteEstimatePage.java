@@ -8,7 +8,7 @@ import com.epam.google_cloud.utils.ExplicitWaiters;
 
 import java.util.ArrayList;
 
-public class EstimateCompletePage {
+public class CompleteEstimatePage {
     private WebDriver driver;
     private ArrayList<String> tabs;
     private final Logger logger;
@@ -16,7 +16,7 @@ public class EstimateCompletePage {
     @FindBy(xpath = "//iframe[contains(@name, \"goog_\")]")
     private WebElement mainFrame;
 
-    @FindBy(css = "#myFrame")
+    @FindBy(id = "myFrame")
     private WebElement frameInMain;
 
     @FindBy(xpath = "//div[@class=\"md-list-item-text ng-binding\" and contains(text(), \"VM class\")]")
@@ -37,7 +37,7 @@ public class EstimateCompletePage {
     @FindBy(css = "h2 > b")
     private WebElement estimatedCost;
 
-    @FindBy(css = "#email_quote")
+    @FindBy(id = "email_quote")
     private WebElement emailEstimate;
 
     @FindBy(xpath = "//input[@type=\"email\"]")
@@ -46,7 +46,7 @@ public class EstimateCompletePage {
     @FindBy(xpath = "//button[@aria-label=\"Send Email\"]")
     private WebElement sendEmailButton;
 
-    public EstimateCompletePage(WebDriver driver, Logger logger) {
+    public CompleteEstimatePage(WebDriver driver, Logger logger) {
         this.driver = driver;
         this.logger = logger;
         PageFactory.initElements(driver, this);
@@ -89,7 +89,7 @@ public class EstimateCompletePage {
         return Double.parseDouble(estimatedCostToString);
     }
 
-    public EstimateCompletePage clickEmailEstimateButton() {
+    public CompleteEstimatePage clickEmailEstimateButton() {
         emailEstimate.click();
         ExplicitWaiters.waitForPresence(driver, By.xpath("//input[@type=\"email\"]"));
         return this;
@@ -103,7 +103,7 @@ public class EstimateCompletePage {
         return new TemporaryEmailPage(driver, logger);
     }
 
-    public EstimateCompletePage inputEmail() {
+    public CompleteEstimatePage inputEmail() {
         ExplicitWaiters.waitForFrame(driver, mainFrame);
         ExplicitWaiters.waitForFrame(driver, frameInMain);
         ExplicitWaiters.waitForPresence(driver, By.xpath("//input[@type=\"email\"]"));
@@ -112,7 +112,7 @@ public class EstimateCompletePage {
         return this;
     }
 
-    public EstimateCompletePage sendEmail() {
+    public CompleteEstimatePage sendEmail() {
         ExplicitWaiters.waitForToBeClickable(driver, sendEmailButton);
         sendEmailButton.click();
         logger.info("Email sent");

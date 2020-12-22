@@ -11,10 +11,10 @@ public class CloudGoogleHome extends AbstractPage {
     private final String HOMEPAGE_URL = "https://cloud.google.com/";
     private final Logger logger;
 
-    @FindBy(css = "form.devsite-search-form")
+    @FindBy(xpath = "//form[@class=\"devsite-search-form\"]")
     private WebElement searchButton;
 
-    @FindBy(css = "input[aria-label=\"Search\"]")
+    @FindBy(xpath = "//input[@aria-label=\"Search\"]")
     private WebElement searchForm;
 
     public CloudGoogleHome(WebDriver driver, Logger logger) {

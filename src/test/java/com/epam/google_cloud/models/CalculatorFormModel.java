@@ -5,7 +5,7 @@ import com.epam.google_cloud.utils.SearchInEnumUtil;
 
 public class CalculatorFormModel {
     private Product product;
-    private String numberOFInstances;
+    private String numberOfInstances;
     private OperatingSystems operatingSystem;
     private VMClass vmClass;
     private Series series;
@@ -17,12 +17,12 @@ public class CalculatorFormModel {
     private CommitedUsages commitedUsage;
     private double totalEsimatedCost;
 
-    public CalculatorFormModel(String product, String numberOFInstances, String operatingSystem, String vmClass,
+    public CalculatorFormModel(String product, String numberOfInstances, String operatingSystem, String vmClass,
                                String series, String machineType,
                                String numberOfGPUs, String gpuType, String localSSDNumber,
                                String dataCenterLocation, String commitedUsage, String totalEstimatedCost) {
         setProduct(product);
-        setNumberOFInstances(numberOFInstances);
+        setNumberOfInstances(numberOfInstances);
         setOperatingSystem(operatingSystem);
         setVmClass(vmClass);
         setSeries(series);
@@ -43,14 +43,14 @@ public class CalculatorFormModel {
         this.product = SearchInEnumUtil.recieveSpecificProduct(product);
     }
 
-    public String getNumberOFInstances() {
-        return numberOFInstances;
+    public String getNumberOfInstances() {
+        return numberOfInstances;
     }
 
-    public void setNumberOFInstances(String numberOFInstances) {
-        int numberToInt = Integer.parseInt(numberOFInstances);
+    public void setNumberOfInstances(String numberOfInstances) {
+        int numberToInt = Integer.parseInt(numberOfInstances);
         if (numberToInt > 0 && numberToInt < Integer.MAX_VALUE){
-            this.numberOFInstances = numberOFInstances;
+            this.numberOfInstances = numberOfInstances;
         } else {
             throw new IllegalArgumentException("Incorrect number of instances value!");
         }
@@ -144,7 +144,7 @@ public class CalculatorFormModel {
         CalculatorFormModel that = (CalculatorFormModel) o;
 
         if (product != that.product) return false;
-        if (numberOFInstances != null ? !numberOFInstances.equals(that.numberOFInstances) : that.numberOFInstances != null)
+        if (numberOfInstances != null ? !numberOfInstances.equals(that.numberOfInstances) : that.numberOfInstances != null)
             return false;
         if (vmClass != that.vmClass) return false;
         if (series != that.series) return false;
@@ -159,7 +159,7 @@ public class CalculatorFormModel {
     @Override
     public int hashCode() {
         int result = product != null ? product.hashCode() : 0;
-        result = 31 * result + (numberOFInstances != null ? numberOFInstances.hashCode() : 0);
+        result = 31 * result + (numberOfInstances != null ? numberOfInstances.hashCode() : 0);
         result = 31 * result + (vmClass != null ? vmClass.hashCode() : 0);
         result = 31 * result + (series != null ? series.hashCode() : 0);
         result = 31 * result + (machineType != null ? machineType.hashCode() : 0);
@@ -175,7 +175,7 @@ public class CalculatorFormModel {
     public String toString() {
         return "CalculatorFormModel{" +
                 "product=" + product +
-                ", numberOFInstances='" + numberOFInstances + '\'' +
+                ", numberOFInstances='" + numberOfInstances + '\'' +
                 ", vmClass=" + vmClass +
                 ", series=" + series +
                 ", machineType=" + machineType +

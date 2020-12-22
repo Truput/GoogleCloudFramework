@@ -18,34 +18,34 @@ public class CalculatorPage extends AbstractPage {
     @FindBy(xpath = "//iframe[contains(@name, \"goog_\")]")
     private WebElement mainFrame;
 
-    @FindBy(css = "#myFrame")
+    @FindBy(id = "myFrame")
     private WebElement frameInMain;
 
     @FindBy(xpath = "//md-autocomplete-wrap/input")
     private WebElement searchEngineField;
 
-    @FindBy(css = "input[ng-model=\"listingCtrl.computeServer.quantity\"]")
+    @FindBy(xpath = "//input[@ng-model=\"listingCtrl.computeServer.quantity\"]")
     private WebElement numberOfInstancesField;
 
     @FindBy(xpath = "//div[3]/md-select-menu/md-content/md-option")
     private List<WebElement> operatingSystemsOptions;
 
-    @FindBy(css = "md-select[ng-model=\"listingCtrl.computeServer.os\"]")
+    @FindBy(xpath = "//md-select[@ng-model=\"listingCtrl.computeServer.os\"]")
     private WebElement operatingSystems;
 
     @FindBy(xpath = "//md-option[@value=\"sql-enterprise\"]")
     private WebElement operatingSystemsLastOption;
 
-    @FindBy(css = "md-select[placeholder=\"Series\"]")
+    @FindBy(xpath = "//md-select[@placeholder=\"Series\"]")
     private WebElement series;
 
     @FindBy(xpath = "//div[5]/md-select-menu/md-content/md-option")
     private List<WebElement> seriesOptions;
 
-    @FindBy(css = "md-option[value=\"n1\"]")
+    @FindBy(xpath = "//md-option[@value=\"n1\"]")
     private WebElement n1SeriesOption;
 
-    @FindBy(css = "md-select[placeholder=\"Instance type\"]")
+    @FindBy(xpath = "//md-select[@placeholder=\"Instance type\"]")
     private WebElement instanceType;
 
     @FindBy(xpath = "//div[6]/md-select-menu/md-content/md-optgroup/md-option")
@@ -54,7 +54,7 @@ public class CalculatorPage extends AbstractPage {
     @FindBy(xpath = "//div[6]/md-select-menu/md-content/md-optgroup/md-option[1]")
     private WebElement instanceFirstType;
 
-    @FindBy(css = "md-checkbox[ng-model=\"listingCtrl.computeServer.addGPUs\"]")
+    @FindBy(xpath = "//md-checkbox[@ng-model=\"listingCtrl.computeServer.addGPUs\"]")
     private WebElement addGPUs;
 
     @FindBy(xpath = "//md-select[contains(@aria-label, \"Number of GPUs\")]/md-select-value")
@@ -105,7 +105,7 @@ public class CalculatorPage extends AbstractPage {
     @FindBy(xpath = "//button[contains(text(), \"Add to Estimate\")]")
     private WebElement addToEstimateButton;
 
-    @FindBy(css = "#email_quote")
+    @FindBy(id = "email_quote")
     private WebElement emailEstimate;
 
     @FindBy(xpath = "//md-select[contains(@aria-label, \"VM Class\")]")
@@ -213,11 +213,11 @@ public class CalculatorPage extends AbstractPage {
         return this;
     }
 
-    public EstimateCompletePage addToEstimate() {
+    public CompleteEstimatePage addToEstimate() {
         addToEstimateButton.click();
         ExplicitWaiters.waitForToBeClickable(driver, emailEstimate);
         logger.info("Estimate complete");
-        return new EstimateCompletePage(driver, logger);
+        return new CompleteEstimatePage(driver, logger);
     }
 
     @Override

@@ -3,7 +3,7 @@ package com.epam.google_cloud.tests;
 import com.epam.google_cloud.driver.DriverSingltone;
 import com.epam.google_cloud.models.CalculatorFormModel;
 import com.epam.google_cloud.pages.CloudGoogleHome;
-import com.epam.google_cloud.pages.EstimateCompletePage;
+import com.epam.google_cloud.pages.CompleteEstimatePage;
 import com.epam.google_cloud.pages.TemporaryEmailPage;
 import com.epam.google_cloud.service.CalculatorFormCreator;
 import com.epam.google_cloud.utils.TestListener;
@@ -29,12 +29,12 @@ public class HardcoreTest {
 
     @Test
     public void estimatedCostInEmailMatchWithCalculator() {
-        EstimateCompletePage estimateCompletePage = new CloudGoogleHome(driver, logger)
+        CompleteEstimatePage completeEstimatePage = new CloudGoogleHome(driver, logger)
                 .openPage()
                 .searchByTerm(SEARCH_TERM)
                 .openResultLink()
                 .enterTermToEngineField(calculatorForm.getProduct())
-                .enterNumberOfInstances(calculatorForm.getNumberOFInstances())
+                .enterNumberOfInstances(calculatorForm.getNumberOfInstances())
                 .chooseOperatingSystems(calculatorForm.getOperatingSystem())
                 .chooseVMClass(calculatorForm.getVmClass())
                 .chooseSeries(calculatorForm.getSeries())
@@ -44,11 +44,11 @@ public class HardcoreTest {
                 .chooseDataCenterLocation(calculatorForm.getDataCenterLocation())
                 .chooseCommitedUsage(calculatorForm.getCommitedUsage())
                 .addToEstimate();
-        double estimatedCostInCalculator = estimateCompletePage.getTotalEstimatedCost();
-        estimateCompletePage.clickEmailEstimateButton();
-        TemporaryEmailPage temporaryEmailPage = estimateCompletePage.createNewTabAndSwitch();
+        double estimatedCostInCalculator = completeEstimatePage.getTotalEstimatedCost();
+        completeEstimatePage.clickEmailEstimateButton();
+        TemporaryEmailPage temporaryEmailPage = completeEstimatePage.createNewTabAndSwitch();
         temporaryEmailPage.openPage().copyGeneratedEmail().switchToTab();
-        estimateCompletePage.inputEmail().sendEmail().switchToTab();
+        completeEstimatePage.inputEmail().sendEmail().switchToTab();
         temporaryEmailPage.openEmail();
         double estimatedCostInEmail = temporaryEmailPage.getEstimatedCost();
         assertThat(estimatedCostInEmail, is(equalTo(estimatedCostInCalculator)));
