@@ -19,13 +19,10 @@ public class TestListener implements ITestListener {
     private Logger logger = LogManager.getRootLogger();
 
     @Override
-    public void onTestStart(ITestResult iTestResult) {
-    }
+    public void onTestStart(ITestResult iTestResult) {}
 
     @Override
-    public void onTestSuccess(ITestResult iTestResult) {
-
-    }
+    public void onTestSuccess(ITestResult iTestResult) {}
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
@@ -33,19 +30,13 @@ public class TestListener implements ITestListener {
     }
 
     @Override
-    public void onTestSkipped(ITestResult iTestResult) {
-
-    }
+    public void onTestSkipped(ITestResult iTestResult) {}
 
     @Override
-    public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {
-
-    }
+    public void onTestFailedButWithinSuccessPercentage(ITestResult iTestResult) {}
 
     @Override
-    public void onStart(ITestContext iTestContext) {
-
-    }
+    public void onStart(ITestContext iTestContext) {}
 
     @Override
     public void onFinish(ITestContext iTestContext) {
